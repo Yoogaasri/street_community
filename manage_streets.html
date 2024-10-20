@@ -1,0 +1,42 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <title>Manage Streets</title>
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5">Manage Streets</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Street Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for street in streets %}
+                <tr>
+                    <td>{{ street[1] }}</td>
+                    <td>
+                        <form action="{{ url_for('delete_street', street_id=street[0]) }}" method="POST">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('add_street') }}" class="btn btn-primary">Add Street</a>
+    </div>
+</body>
+</html>
+
+
+{% endblock %}

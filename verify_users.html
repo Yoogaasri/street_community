@@ -1,0 +1,48 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Verify Users</title>
+    <!-- Bootstrap CSS -->
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">User Verification</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>ID Proof</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user[1] }}</td>
+                    <td>{{ user[2] }}</td>
+                    <td><a href="{{ user[3] }}" class="btn btn-link">View ID Proof</a></td>
+                    <td>{{ 'Verified' if user[4] else 'Not Verified' }}</td>
+                    <td>
+                        {% if not user[4] %}
+                        <a href="{{ url_for('verify_user', user_id=user[0]) }}" class="btn btn-success btn-sm">Verify</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    
+</body>
+</html>
+
+{% endblock %}

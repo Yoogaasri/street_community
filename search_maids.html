@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    body {
+        position: relative;
+        overflow: hidden;
+        color: #000000;
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="number"],
+    textarea,
+    select {
+        opacity: 0.6;
+    }
+
+    body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url("https://images.pexels.com/photos/6684752/pexels-photo-6684752.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.5;
+        z-index: -1;
+    }
+</style>
+<body>
+    <div class="container">
+        <header class="text-center my-4">
+            <h1>Search Maids</h1>
+            <nav class="nav justify-content-center">
+                <!-- <a class="nav-link" href="{{ url_for('user_dashboard') }}">Dashboard</a>
+                <a class="nav-link" href="{{ url_for('logout') }}">Logout</a> -->
+            </nav>
+        </header>
+        <style>
+            
+        </style>
+
+        <form method="GET" action="{{ url_for('search_maids') }}">
+            <div class="form-group">
+                <label for="street">Select Street</label>
+                <select class="form-control" id="street" name="street" required>
+                    <option value="">Select a street</option>
+                    {% for street in streets %}
+                        <option value="{{ street[0] }}">{{ street[1] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Search Maids</button>
+        </form>
+
+        <main class="mt-4">
+            <h2>Maids on Selected Street</h2>
+            <ul class="list-group">
+                {% for maid in maids %}
+                    <li class="list-group-item">{{ maid[1] }}</li>  <!-- Adjust index based on your table structure -->
+                {% else %}
+                    <li class="list-group-item">No maids found on this street.</li>
+                {% endfor %}
+            </ul>
+        </main>
+
+        <footer class="text-center mt-4">
+            <p>&copy; 2024 Street Community</p>
+        </footer>
+    </div>
+</body>
+</html>
+{% endblock %}

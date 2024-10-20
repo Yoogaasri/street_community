@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body>
+
+    <style>
+        body {
+            position: relative;
+            color: #fff;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="number"],
+        textarea,
+        select {
+            opacity: 0.6;
+        }
+    
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://images.pexels.com/photos/774285/pexels-photo-774285.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+            background-size: cover;
+            background-position: center;
+            opacity: 0.5;
+            z-index: -1;
+        }
+    </style>
+
+    <div class="container">
+        <header class="text-center my-4">
+            <h1>Nearby Shops</h1>
+        </header>
+
+        <!-- Form to select street -->
+        <form action="{{ url_for('search_shops') }}" method="GET">
+            <div class="form-group">
+                <label for="street">Select Street:</label>
+                <select name="street" id="street" class="form-control" required>
+                    <option value="" disabled selected>Select your street</option>
+                    {% for street in streets %}
+                        <option value="{{ street[0] }}">{{ street[1] }}</option> <!-- street[0] is the ID, street[1] is the street name -->
+                    {% endfor %}
+                </select>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-success">Search Shops</button>
+        </form>
+
+        <!-- Display shops as Bootstrap cards -->
+        <main class="mt-4">
+            <h2>Shops on Selected Street</h2>
+            <div class="row">
+                {% for shop in shops %}
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <!-- Check if shop image is None, if so, display a placeholder image -->
+                            <img src="{{ url_for('static', filename='uploads/' + shop[3]) if shop[3] else url_for('static', filename='uploads/default-placeholder.png') }}" 
+                                 class="card-img-top" alt="Shop Image">
+
+                            <div class="card-body">
+                                <h5 class="card-title">{{ shop[1] }}</h5> <!-- shop[1] is the shop name -->
+                                <p class="card-text">{{ shop[2] }}</p> <!-- shop[2] is the category or description -->
+                                <a href="{{ shop[4] }}" target="_blank" class="btn btn-primary">Open Map</a> <!-- shop[4] is the map URL -->
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <!-- Message if no shops found -->
+                    <div class="col-12">
+                        <p class="alert alert-warning">No shops found on this street.</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </main>
+
+        <footer class="text-center mt-4">
+            <p>&copy; 2024 Street Community</p>
+        </footer>
+    </div>
+</body>
+</html>
+{% endblock %}

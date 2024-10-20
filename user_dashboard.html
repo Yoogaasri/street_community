@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    body {
+        position: relative;
+        overflow: hidden;
+        color: #fff;
+    }
+
+    body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url("https://media.discordapp.net/attachments/1209366891051618394/1297478732126355528/bg2.jpg?ex=671612bb&is=6714c13b&hm=80ead3c72aca8d5a3ece4bff67a8b28aa036dc81659bd322ec9d84aba2d35d5a&=&format=webp");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.5;
+        z-index: -1;
+    }
+</style>
+
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="bg-flower">
+
+            <img src="{{ url_for('static', filename='assets/images/flowers/img-1.png') }}">
+        </div>
+
+        <div class="bg-flower-2">
+            <img src="{{ url_for('static', filename='assets/images/flowers/img-3.png') }}">
+        </div>
+    </div>
+</div>
+
+
+
+
+<header class="text-center my-4">
+    <h2 class="page-title">welcome to our community</h2>
+    <p></p>
+    <nav class="nav justify-content-center">
+        <!-- <a class="nav-link" href="{{ url_for('user_dashboard') }}">Dashboard</a> -->
+        <!-- <a class="nav-link" href="{{ url_for('logout') }}">Logout</a> -->
+    </nav>
+</header>
+
+<main>
+    
+
+    <!-- <section class="mb-5">
+        <h2>Search Nearby Shops</h2>
+        <p>Find shops based on your street.</p>
+        <form action="{{ url_for('search_shops') }}" method="GET">
+            <div class="form-group">
+                <label for="street">Select Street:</label>
+                <select name="street" id="street" class="form-control" required>
+                    {% for street in streets %}
+                    <option value="{{ street[0] }}">{{ street[1] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success">Search Shops</button>
+        </form>
+    </section> -->
+
+    <!-- <section class="mb-5">
+        <h2>Search for Maids</h2>
+        <p>Find maids based on your street.</p>
+        <form action="{{ url_for('search_maids') }}" method="GET">
+            <div class="form-group">
+                <label for="street">Select Street:</label>
+                <select name="street" id="street" class="form-control" required>
+                    {% for street in streets %}
+                    <option value="{{ street[0] }}">{{ street[1] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success">Search Maids</button>
+        </form>
+    </section> -->
+
+    <!-- <section class="mb-5">
+        <h2>Maid Job Requests</h2>
+        <p>View and manage your job requests.</p>
+        <form action="{{ url_for('maid_requests') }}" method="GET">
+            <div class="form-group">
+                <label for="street">Specify Street:</label>
+                <select name="street" id="street" class="form-control" required>
+                    {% for street in streets %}
+                    <option value="{{ street[0] }}">{{ street[1] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success">Show Job Requests</button>
+        </form>
+    </section> -->
+</main>
+
+<footer class="text-center">
+    <p>&copy; 2024 Street Community</p>
+</footer>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+{% endblock %}

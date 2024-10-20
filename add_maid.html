@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<head>
+    <title>Add Maid</title>
+</head>
+
+<style>
+    body {
+        position: relative;
+        color: #fff;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="number"],
+    textarea,
+    select {
+        opacity: 0.6;
+    }
+
+    body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20240619/pngtree-room-service-maid-putting-stack-of-white-towels-on-bed-in-image_15798741.jpg");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.5;
+        z-index: -1;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h2 class="mt-5">Add Maid Request</h2>
+        <form method="POST" action="{{ url_for('add_maid') }}">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="text" class="form-control" id="phone" name="phone" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="street_id" class="form-label">Street</label>
+                <select class="form-select" id="street_id" name="street_id" required>
+                    {% for street in streets %}
+                    <option value="{{ street[0] }}">{{ street[1] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Maid</button>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock %}

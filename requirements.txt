@@ -1,0 +1,9 @@
+Flask==2.0.3
+Flask-MySQLdb==0.2.0
+Werkzeug==2.0.3
+
+INSERT INTO users (name, phone, email, age, gender, id_proof, street_name, user_type, password) VALUES 
+('John Doe', '1234567890', 'johndoe@example.com', 30, 'Male', 'id_proof_john.pdf', 'Street 1', 'Member', '$pbkdf2-sha256$29000$RUBxO8LBR7iCX9yRgtp1Cw$BL8ICkJt3AkY21rBcYyAPtiKm4AeQo12myZ0tZnAovA='),
+('Jane Smith', '0987654321', 'janesmith@example.com', 28, 'Female', 'id_proof_jane.pdf', 'Street 2', 'Member', '$pbkdf2-sha256$29000$tk2FInXsErEUV/GMsQukXA$1R8mMCRhICMGV0X4iH1ZpPZ4jZgDbHDMBg+H7DS9Q9s='),
+('Emily White', '1112223333', 'emilywhite@example.com', 25, 'Female', 'id_proof_emily.pdf', 'Street 3', 'MaidMember', '$pbkdf2-sha256$29000$E/iShIoMUSY8pPIgfY4RRA$UbAPWzFGB3rj6oZtxkDWcANdF7dNLVKtyg0LYSP9Gbg='),
+('Michael Brown', '4445556666', 'michaelbrown@example.com', 35, 'Male', 'id_proof_michael.pdf', 'Street 1', 'MaidMember', '$pbkdf2-sha256$29000$Okt5dBRHjOl8cv6zZ0KMmg$JqBPYyQn5quZUncIdc3bIjUtgsddRfMyj17HjXSoY1M=');

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>{{ title if title else 'Dashboard' }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/images/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/daterangepicker/daterangepicker.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css') }}">
+    <script src="{{ url_for('static', filename='assets/js/config.js') }}"></script>
+    <link href="{{ url_for('static', filename='assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style" />
+    <link href="{{ url_for('static', filename='assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <style>
+        body {
+            background-image: url("https://images.pexels.com/photos/1133496/pexels-photo-1133496.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+            background-size: cover;
+            background-position: center;
+            color: white; /* Text color for better contrast */
+            overflow: hidden;
+        }
+
+        input {
+            opacity: 0.6;
+        }
+
+        .account-pages {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh; /* Ensure content fills the screen */
+            padding: 2rem 0; /* Consistent padding */
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.2); /* Adjust alpha for desired transparency */
+            border-radius: 1rem;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+        }
+        
+        /* Styles for the left content */
+        .left-content {
+            text-align: left; /* Align text to the left */
+        }
+
+
+
+        .str-logo {
+            height: 50px;
+        }
+        .logo-dark img {
+            width: 250px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="account-pages">
+        <div class="container">
+            <div class="row align-items-center">  <!-- Use align-items-center for vertical alignment -->
+                <style>
+                    .auth-brand img {
+                        width: 200px; /* Adjust the width to your preferred size */
+                        height: auto; /* Keeps the aspect ratio of the image */
+                    }
+                
+                    /* Optional: Different size for light and dark logos */
+                    .auth-brand .logo-light img {
+                        width: 200px;
+                    }
+                
+                    .auth-brand .logo-dark img {
+                        width: 200px;
+                    }
+                </style>
+                
+                <!-- Left Side Content (Welcome message, logo, etc.) -->
+                <div class="col-lg-6 left-content order-lg-1 order-2">  <!-- Push to right on large screens -->
+                    <div class="auth-brand">
+                        <a href="#" class="logo-light">
+                            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo" style="width: 500px; height: auto;">
+                        </a>
+                        <a href="#" class="logo-dark">
+                            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo" class="img-fluid" style="width: 500px; height: auto;">
+                        </a>
+                        
+                        <br>
+                        <br>
+                        <h2 class="mt-0 fw-bold">Welcome Back!</h2> <!-- Example heading -->
+
+                    <p class="text-muted mb-4">Enter your credentials to access your account.</p>
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <footer class="footer footer-alt fw-medium mt-5">
+                        <p>© 2024 Street Community</p>
+                    </footer>
+
+
+
+                </div>
+
+
+                <!-- Right Side Content (Login Form) -->
+                <div class="col-lg-6 order-lg-2 order-1"> <!-- Push to left on large screens -->
+                    <div class="glass-card">
+                        <h3 class="text-dark-50 mt-0 fw-bold">Admin Login</h3>
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                        {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}" role="alert">
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+
+                        <form method="POST" action="{{ url_for('admin_login') }}">
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" name="password"
+                                    placeholder="Enter your password" required>
+                            </div>
+                            <div class="mb-3 text-center">
+                                <button type="submit" class="btn btn-primary w-100">Login</button>
+                            </div>
+                        </form>                 
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="{{ url_for('static', filename='assets/js/vendor.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/daterangepicker/moment.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/daterangepicker/daterangepicker.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/pages/demo.dashboard.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/app.min.js') }}"></script>
+
+</body>
+</html>

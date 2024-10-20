@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    body {
+        position: relative;
+        color: #fff;
+    }
+
+    body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url("https://st2.depositphotos.com/1760420/6912/i/450/depositphotos_69125049-stock-photo-customer-services-complaint-concept.jpg");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.5;
+        z-index: -1;
+    }
+</style>
+
+<div class="container">
+    <section class="mb-5">
+        <h2>Create Grievance</h2>
+        <p>Report any issues or grievances in the community.</p>
+        <a href="{{ url_for('create_grievance') }}" class="btn btn-primary">Create Grievance</a>
+    </section>
+    <h2>My Grievances</h2>
+
+    {% if grievances %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Submitted On</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for grievance in grievances %}
+            <tr>
+                <td>{{ grievance[0] }}</td> <!-- ID -->
+                <td>{{ grievance[1] }}</td> <!-- Title -->
+                <td>{{ grievance[2] }}</td> <!-- Description -->
+                <td>{{ grievance[3] }}</td> <!-- Status -->
+                <td>{{ grievance[4] }}</td> <!-- Created At -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>You have not submitted any grievances yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

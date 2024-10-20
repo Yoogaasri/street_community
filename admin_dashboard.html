@@ -1,0 +1,89 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+</head>
+<body>
+    <style>
+        body {
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="number"],
+        textarea,
+        select {
+            opacity: 0.6;
+        }
+    
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://images.pexels.com/photos/1574848/pexels-photo-1574848.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+            background-size: cover;
+            background-position: center;
+            opacity: 0.5;
+            z-index: -1;
+        }
+    </style>
+
+    <div class="container">
+        <!-- <header class="text-center my-4">
+            <h1>Admin Dashboard</h1>
+            <nav class="nav justify-content-center">
+                <a class="nav-link" href="{{ url_for('admin_dashboard') }}">Dashboard</a>
+                <a class="nav-link" href="{{ url_for('manage_maids') }}">Manage Maids</a>
+                <a class="nav-link" href="{{ url_for('manage_shops') }}">Manage Shops</a>
+                <a class="nav-link" href="{{ url_for('manage_grievances') }}">Manage Grievances</a>
+                <a class="nav-link" href="{{ url_for('manage_utilities') }}">Manage Utilities</a>
+                <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+            </nav>
+        </header> -->
+
+        <main>
+            <section class="mb-5">
+                <h2>Verify Users</h2>
+                <p>Review registered users and their documents.</p>
+                <a href="{{ url_for('verify_users') }}" class="btn btn-primary">Verify Users</a>
+            </section>
+
+            <section class="mb-5">
+                <h2>Maid Job Requests</h2>
+                <p>Review job requests from maids.</p>
+                <a href="{{ url_for('manage_maids') }}" class="btn btn-primary">Manage Maid Job Requests</a>
+            </section>
+
+            <section class="mb-5">
+                <h2>Manage Streets</h2>
+                <p>Add or remove streets in the system.</p>
+                <a href="{{ url_for('manage_streets') }}" class="btn btn-primary">Manage Streets</a>
+            </section>
+        </main>
+
+        <footer class="text-center">
+            <p>&copy; 2024 Street Community</p>
+        </footer>
+    </div>
+<!-- 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+</body>
+</html>
+
+
+{% endblock %}

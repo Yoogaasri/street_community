@@ -1,0 +1,175 @@
+<div class="wrapper">
+
+
+    <!-- ========== Topbar Start ========== -->
+    <div class="navbar-custom">
+        <div class="topbar container-fluid">
+            <div class="d-flex align-items-center gap-lg-2 gap-1">
+
+                <!-- Topbar Brand Logo -->
+                <div class="logo-topbar">
+                    <!-- Logo light -->
+                    <a href="{{ url_for('user_dashboard') }}" class="logo-light">
+                        <span class="logo-lg">
+                            <!-- {{ url_for('static', filename='assets/images/logo.png') }} -->
+                            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo">
+                        </span>
+                        <span class="logo-sm">
+                            <!-- {{ url_for('static', filename='assets/images/logo-sm.png') }} -->
+                            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="small logo">
+                        </span>
+                    </a>
+
+                    <!-- Logo Dark -->
+                    <a href="{{ url_for('user_dashboard') }}" class="logo-dark">
+                        <span class="logo-lg">
+                            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="dark logo">
+                        </span>
+                        <span class="logo-sm">
+                            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="small logo">
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Sidebar Menu Toggle Button -->
+                <button class="button-toggle-menu">
+                    <i class="ri-menu-2-fill"></i>
+                </button>
+            </div>
+
+            <ul class="topbar-menu d-flex align-items-center gap-3">
+
+                <li class="d-none d-sm-inline-block">
+                    <div class="nav-link" id="light-dark-mode">
+                        <i class="ri-moon-line fs-22"></i>
+                    </div>
+                </li>
+
+                <li class="dropdown">
+                    <a class="nav-link dropdown-toggle arrow-none nav-user px-2" data-bs-toggle="dropdown" href="#"
+                        role="button" aria-haspopup="false" aria-expanded="false">
+                        <span class="account-user-avatar">
+                            <img src="{{ url_for('static', filename='assets/images/users/avatar-1.jpg') }}"
+                                alt="user-image" width="32" class="rounded-circle">
+                        </span>
+                        <span class="d-lg-flex flex-column gap-1 d-none">
+                            <h5 class="my-0">Welcome Admin!</h5>
+                        </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated profile-dropdown">
+                        <!-- item-->
+                        <a href="{{ url_for('logout') }}" class="dropdown-item">
+                            <i class="ri-logout-box-line fs-18 align-middle me-1"></i>
+                            <span>Logout</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- ========== Topbar End ========== -->
+
+    <!-- ========== Left Sidebar Start ========== -->
+    <div class="leftside-menu">
+
+        <style>
+            .logo-lg img {
+                height: 60px; /* Set height for large logo */
+                max-width: 100%; /* Make it responsive */
+                height: auto; /* Maintain aspect ratio */
+            }
+            .logo-sm img {
+                height: 40px; /* Set height for small logo */
+                max-width: 100%; /* Make it responsive */
+                height: auto; /* Maintain aspect ratio */
+            }
+        </style>
+        
+        <a href="" class="logo logo-light">
+            <span class="logo-lg">
+                <img class="st-logo" src="{{ url_for('static', filename='img/logo.png') }}" alt="logo">
+            </span>
+            <span class="logo-sm">
+                <img class="st-logo" src="{{ url_for('static', filename='img/logo.png') }}" alt="small logo">
+            </span>
+        </a>
+        
+        <!-- Brand Logo Dark -->
+        <a href="" class="logo logo-dark">
+            <span class="logo-lg">
+                <img class="st-logo" src="{{ url_for('static', filename='img/logo.png') }}" alt="dark logo">
+            </span>
+            <span class="logo-sm">
+                <img class="st-logo" src="{{ url_for('static', filename='img/logo.png') }}" alt="small logo">
+            </span>
+        </a>
+        
+        <!-- Full Sidebar Menu Close Button -->
+        <div class="button-close-fullsidebar">
+            <i class="ri-close-fill align-middle"></i>
+        </div>
+
+        <!-- Sidebar -left -->
+        <div class="h-100" id="leftside-menu-container" data-simplebar>
+            <!-- Leftbar User -->
+            <div class="leftbar-user">
+                <a href="pages-profile.html">
+                    <img src="assets/images/users/avatar-1.jpg" alt="user-image" height="42"
+                        class="rounded-circle shadow-sm">
+                    <span class="leftbar-user-name mt-2">Michael Berndt</span>
+                </a>
+            </div>
+
+            <!--- Sidemenu -->
+            <ul class="side-nav">
+
+                <li class="side-nav-title">Main</li>
+
+                <li class="side-nav-item">
+                    <a href="{{ url_for('admin_dashboard') }}" class="side-nav-link">
+                        <i class="ri-dashboard-2-fill"></i>
+                        <span> Dashboard </span>
+                    </a>
+                </li>
+
+                <li class="side-nav-item">
+                    <a href="{{ url_for('manage_maids') }}" class="side-nav-link">
+                        <i class="bi bi-person-badge-fill"></i>
+                        <span> Manage Maids </span>
+                    </a>
+                </li>
+
+                <li class="side-nav-item">
+                    <a href="{{ url_for('manage_shops') }}" class="side-nav-link">
+                        
+                        <i class="bi bi-shop"></i>
+                        <span> Manage Shops </span>
+                    </a>
+                </li>
+
+                <li class="side-nav-item">
+                    <a href="{{ url_for('manage_grievances') }}" class="side-nav-link">
+                        <i class="bi bi-info-square-fill"></i>
+                        <span> Manage Grievances </span>
+                    </a>
+                </li>
+
+                <li class="side-nav-item">
+                    <a href="{{ url_for('manage_utilities') }}" class="side-nav-link">
+                        <i class="bi bi-person-plus-fill"></i>
+                        <span> Manage Utilities </span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        </li>
+
+
+        </ul>
+        <!--- End Sidemenu -->
+
+        <div class="clearfix"></div>
+    </div>
+</div>
+</div>

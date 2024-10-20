@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>{{ title if title else 'Dashboard' }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/images/favicon.ico') }}">
+    
+    <!-- Daterangepicker css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/daterangepicker/daterangepicker.css') }}">
+    
+    <!-- Vector Map css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css') }}">
+    
+    <!-- Theme Config Js -->
+    <script src="{{ url_for('static', filename='assets/js/config.js') }}"></script>
+    
+    <!-- App css -->
+    <link href="{{ url_for('static', filename='assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style" />
+    
+    <!-- Icons css -->
+    <link href="{{ url_for('static', filename='assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    {% include 'nav_admin.html' %}

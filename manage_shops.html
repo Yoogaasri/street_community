@@ -1,0 +1,74 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <title>Manage Shops</title>
+</head>
+<body>
+    <style>
+        body {
+            position: relative;
+            color: #fff;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="number"],
+        textarea,
+        select {
+            opacity: 0.6;
+        }
+    
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://images.pexels.com/photos/774285/pexels-photo-774285.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+            background-size: cover;
+            background-position: center;
+            opacity: 0.5;
+            z-index: -1;
+        }
+    </style>
+    <div class="container">
+        <h2 class="mt-5">Manage Shops</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Street</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for shop in shops %}
+                <tr>
+                    <td>{{ shop[1] }}</td>
+                    <td>{{ shop[2] }}</td>
+                    <td>{{ shop[3] }}</td>
+                    <td>
+                        <form action="{{ url_for('delete_shop', shop_id=shop[0]) }}" method="POST">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('add_shop') }}" class="btn btn-primary">Add Shop</a>
+    </div>
+</body>
+</html>
+
+
+{% endblock %}

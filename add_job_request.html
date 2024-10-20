@@ -1,0 +1,38 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+<head>
+    <title>Add Job Rquest</title>
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5">Add Maid</h2>
+        <form method="POST" action="{{ url_for('add_maid') }}">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="text" class="form-control" id="phone" name="phone" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="street_id" class="form-label">Street</label>
+                <select class="form-select" id="street_id" name="street_id" required>
+                    {% for street in streets %}
+                    <option value="{{ street[0] }}">{{ street[1] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Maid</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+{% endblock %}

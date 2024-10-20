@@ -1,0 +1,65 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <title>Manage Grievances</title>
+</head>
+<body>
+    <style>
+        body {
+            position: relative;
+            color: #fff;
+        }
+    
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://st2.depositphotos.com/1760420/6912/i/450/depositphotos_69125049-stock-photo-customer-services-complaint-concept.jpg");
+            background-size: cover;
+            background-position: center;
+            opacity: 0.5;
+            z-index: -1;
+        }
+    </style>
+    <div class="container">
+        <h2 class="mt-5">Manage Grievances</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Grievance</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for grievance in grievances %}
+                <tr>
+                    <td>{{ grievance[1] }}</td>
+                    <td>{{ grievance[2] }}</td>
+                    <td>{{ grievance[3] }}</td>
+                    <td>
+                        <form action="{{ url_for('resolve_grievance', grievance_id=grievance[0]) }}" method="POST">
+                            <button type="submit" class="btn btn-success btn-sm">Resolve</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+
+{% endblock %}

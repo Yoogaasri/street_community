@@ -1,0 +1,62 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <title>Add Shop</title>
+</head>
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="alert alert-dismissible">
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+        <h2 class="mt-5">Add Shop</h2>
+        <form method="POST" action="{{ url_for('add_shop') }}" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">Shop Name</label>
+                <input type="text" name="name" placeholder="Shop Name" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="category">Category</label>
+                <input type="text" name="category" placeholder="Category" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="street_id">Street</label>
+                <select name="street_id" class="form-control" required>
+                    {% for street in streets %}
+                    <option value="{{ street[0] }}">{{ street[1] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="shop_image">Shop Image</label>
+                <input type="file" name="shop_image" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="shop_map_url">Shop Map URL</label>
+                <input type="url" name="shop_map_url" placeholder="Shop Map URL" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Shop</button>
+        </form>
+    </div>
+</body>
+</html>
+
+{% endblock %}

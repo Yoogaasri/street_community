@@ -1,0 +1,74 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <title>Manage Utilities</title>
+</head>
+<body>
+    <style>
+        body {
+            position: relative;
+            color: #fff;
+        }
+    
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://images.pexels.com/photos/2583028/pexels-photo-2583028.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+            background-size: cover;
+            background-position: center;
+            opacity: 0.5;
+            z-index: -1;
+        }
+    </style>
+    <div class="container">
+        <h2 class="mt-5">Manage Utilities</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Utility Type</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for utility in utilities %}
+                <tr>
+                    <td>{{ utility[1] }}</td>
+                    <td>{{ utility[2] }}</td>
+                    <td>
+                        <form action="{{ url_for('delete_utility', utility_id=utility[0]) }}" method="POST">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <form method="POST" action="{{ url_for('manage_utilities') }}">
+            <div class="mb-3">
+                <label for="utility_type" class="form-label">Utility Type</label>
+                <input type="text" class="form-control" id="utility_type" name="utility_type" required>
+            </div>
+            <div class="mb-3">
+                <label for="status" class="form-label">Status</label>
+                <input type="text" class="form-control" id="status" name="status" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Utility</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+{% endblock %}
